@@ -1,0 +1,20 @@
+# action.yml
+name: 'Pull Linode Action'
+description: 'Pull changes on linode VM'
+inputs:
+    linodevm:
+         description: 'Linode VM where action will run'
+         required: true
+    linodeuser:
+         description: 'User used to login on linode VM'
+         required: true
+    linodeuserpwd:
+         description: 'Password for user'
+         required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+      LINODEVM: ${{ inputs.linodevm }}
+      LINODEUSER: ${{ inputs.linodeuser }}
+      LINODEUSERPWD: ${{ inputs.linodeuserpwd }}
